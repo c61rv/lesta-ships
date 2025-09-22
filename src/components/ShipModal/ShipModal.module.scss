@@ -1,0 +1,157 @@
+@use '../../styles/variables.scss' as *;
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #00000069;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.active {
+    opacity: 1;
+    pointer-events: painted;
+
+    .modalContent {
+        opacity: 1;
+        transform: translateY(0vh);
+    }
+
+    .modalImg img {
+        transform: translateX(0%) translateY(0%) scale(1);    
+        transition: all 0.5s ease-out 0.3s;
+    }
+
+    .modalTitle {
+        transform: translateY(0);
+        opacity: 1;
+        transition: all 0.3s ease-in-out 0.3s;
+    }
+
+    .modalDescription {
+        transform: translateY(0);
+        opacity: 1;
+        transition: all 0.3s ease-in-out 0.4s;
+    }
+
+    .modalProperties {
+        transform: translateY(0);
+        opacity: 1;
+        transition: all 0.3s ease-in-out 0.5s;
+    }
+}
+
+.modalContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: calc(30 * var(--offset));
+    max-width: 90%;
+    max-height: 90vh;
+    backdrop-filter: blur(70px);
+    opacity: 0;
+    transform: translateY(10vh);
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mask: linear-gradient(#000 0 0) exclude, linear-gradient(#000 0 0) content-box;
+        background: linear-gradient(90deg, rgba(255, 255, 255, .16), transparent, rgba(255, 255, 255, .16));
+        border: 1px solid transparent;
+        pointer-events: none;
+    }
+}
+
+.modalImg {
+    display: flex;
+    width: 100%;
+    height: calc(15 * var(--offset));
+    background-image: url('../../assets//img//ship-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: bottom center;
+        transform: translateX(-40%) translateY(10%) scale(0.7);
+        transition: all 0s ease-in 0.5s;
+    }
+}
+
+.modalInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: calc(1 * var(--offset));
+    padding: calc(1.5 * var(--offset));
+    overflow: auto;
+}
+
+.modalDescription {
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin: 0;
+    color: #b2b5ba;
+    text-align: center;
+    transform: translateY(calc(1 * var(--offset)));
+    opacity: 0;
+    transition: all 0s ease-in 0.5s;
+}
+
+.modalProperties {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--white);
+    transform: translateY(calc(1 * var(--offset)));
+    opacity: 0;
+    transition: all 0s ease-in 0.5s;
+}
+
+.modalTitle {
+    font-size: 1.6em;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    transform: translateY(calc(1 * var(--offset)));
+    opacity: 0;
+    transition: all 0s ease-in 0.5s;
+}
+
+.closeModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: calc(0.5 * var(--offset));
+    z-index: 1;
+
+    svg {
+        width: calc(1 * var(--offset));
+        height: calc(1 * var(--offset));
+        fill: var(--black);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+        svg {
+            fill: var(--red);
+        }
+    }
+}

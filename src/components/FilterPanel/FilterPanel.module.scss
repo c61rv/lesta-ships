@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss' as *;
+
+.filterPanel {
+    padding: 0 calc(2 * var(--offset));
+    display: flex;
+    gap: calc(1 * var(--offset));
+    width: 100%;
+    overflow: auto;
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.25 * var(--offset));
+
+    label {
+        font-size: 1.1em;
+        font-weight: 500;
+    }
+}
+
+.formSelect {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: calc(0.85 * var(--offset)) calc(1.5 * var(--offset));
+    min-width: calc(8 * var(--offset));
+    border-radius: calc(0.1 * var(--offset));
+    font-size: 0.95em;
+    font-weight: 400;
+    border: 1px solid #ffffff2d;
+    color: var(--white);
+    appearance: none;
+    cursor: pointer;
+
+    option {
+        color: var(--white);
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}

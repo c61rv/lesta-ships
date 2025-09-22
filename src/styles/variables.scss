@@ -1,0 +1,13 @@
+:root {
+  // colors
+--white: #ffffff;
+--black: #000000;
+--red: #c1112c;
+
+/* font */
+--ff: "ALS Wagon", sans-serif;
+--fs: max(1vw, 16px);
+
+/* offset */
+--offset: max(calc(1.25 * 1vw), 16px);
+}

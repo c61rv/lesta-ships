@@ -1,0 +1,32 @@
+@use '../../styles/variables.scss' as *;
+
+.shipsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--offset);
+    margin-top: calc(3 * var(--offset));
+
+    @media screen and (max-width: 500px) {
+      gap: calc(1.5 * var(--offset));
+      margin-top: calc(2 * var(--offset));
+    }
+}
+
+.loadingMore {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.errorMessage {
+  text-align: center;
+  color: red;
+  margin-top: 20px;
+}
+
+.noResults {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #555;
+}

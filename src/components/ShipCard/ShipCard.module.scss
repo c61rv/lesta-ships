@@ -1,0 +1,114 @@
+@use '../../styles/variables.scss' as *;
+
+.shipCard {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1 * var(--offset));
+    width: calc(33.33% - (0.85 * var(--offset)));
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+        .shipCard__ship {
+            transform: scale(1.1);
+        }
+        
+        .shipCard__waves {
+            opacity: 0;
+            transform: translateY(calc(6 * var(--offset)));
+
+            @media screen and (max-width: 800px) {
+                opacity: 1;
+                transform: translateY(calc(5 * var(--offset)));
+            }
+        }
+
+        .shipCard__flag {
+            opacity: 0.5;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        width: calc(50% - (0.5 * var(--offset)));
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 100%;
+        gap: 0;
+    }
+}
+
+.shipCard__img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.shipCard__ship {
+    width: 80%;
+    object-fit: contain;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.shipCard__waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(20 * var(--offset));
+    transform: translateY(calc(4.2 * var(--offset)));
+    transition: all 0.3s ease-in-out;
+    z-index: 3;
+
+    @media screen and (max-width: 800px) {
+        display: none;
+    }
+}
+
+.shipCard__flag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+
+    @media screen and (max-width: 800px) {
+        opacity: 0.5;
+    }
+}
+
+.shipCard__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(0.25 * var(--offset));
+    z-index: 4;
+}
+
+.shipCard__title {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+
+    @media screen and (max-width: 800px) {
+        font-size: 1.5em;
+    }
+}
+
+.shipCard__details {
+    margin: 0;
+    font-size: 1.2em;
+
+    @media screen and (max-width: 800px) {
+        font-size: 0.75em;
+    }
+}
